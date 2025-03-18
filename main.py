@@ -6,8 +6,8 @@ from io import BytesIO
 
 
 
-st.set_page_config(page_title="Data Sweeper", layout="wide")
-st.title("DATA SWEEPER")
+st.set_page_config(page_title="🚀📀Data Sweeper", layout="wide")
+st.title("🚀📀 DATA SWEEPER")
 st.write("Transform your files between CSV and Excel formats with built-in data cleaning and visualization")
 
 uploaded_files = st.file_uploader("Upload your files (CSV or Excel):", type=["CSV", "xlsc"],accept_multiple_files = True)
@@ -30,11 +30,11 @@ if uploaded_files:
         st.write(f"File Size: {file.size/1024}")
 
 
-        st.write("Preview the Head of the Dataframe")
+        st.write("🔎 Preview the Head of the Dataframe")
         st.dataframe(df.head())
 
 
-        st.subheader("Data Cleaning Options")
+        st.subheader("🛠️ Data Cleaning Options")
         if st.checkbox(f"Clean Data for {file.name}"):
             col1, col2 = st.columns(2)
 
@@ -57,13 +57,13 @@ if uploaded_files:
 
 
 
-        st.subheader("Data Visualization")
+        st.subheader("📊 Data Visualization")
         if st.checkbox(f"Show Visualization for {file.name}"):
             st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
 
 
 
-        st.subheader("Conversion Options")
+        st.subheader("🔄 Conversion Options")
         conversion_type = st.radio(f"Convert {file.name} to:", ["CSV","Excel"], key=file.name)
         if st.button(f"Convert {file}"):
             buffer = BytesIO()
@@ -81,7 +81,7 @@ if uploaded_files:
 
 
             st.download_button(
-                label=f"Download {file.name} as {conversion_type}",
+                label=f"⬇️ Download {file.name} as {conversion_type}",
                 data=buffer,
                 file_name=file_name,
                 mime=mime_type
